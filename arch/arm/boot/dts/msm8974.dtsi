@@ -649,6 +649,9 @@
 		reg-names = "slimbus_physical", "slimbus_bam_physical";
 		interrupts = <0 163 0 0 164 0>;
 		interrupt-names = "slimbus_irq", "slimbus_bam_irq";
+		qcom,apps-ch-pipes = <0x60000000>;
+		qcom,ea-pc = <0x30>;
+		qcom,slim-mdm = <1>;
 
 		taiko_codec {
 			compatible = "qcom,taiko-slim-pgd";
@@ -866,6 +869,8 @@
 		qcom,dwc-usb3-msm-dbm-eps = <4>;
 		qcom,vdd-voltage-level = <1 5 7>;
 		qcom,dwc-hsphy-init = <0x00D191A4>;
+		qcom,dwc-usb3-msm-tx-fifo-size = <29696>;
+		qcom,dwc-usb3-msm-qdss-tx-fifo-size = <8192>;
 
 		qcom,msm-bus,name = "usb3";
 		qcom,msm-bus,num-cases = <2>;
@@ -879,6 +884,7 @@
 			interrupt-parent = <&intc>;
 			interrupts = <0 131 0>, <0 179 0>;
 			interrupt-names = "irq", "otg_irq";
+			tx-fifo-resize;
 		};
 	};
 
@@ -1275,8 +1281,8 @@
 		qcom,msm-bus,num-cases = <2>;
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
-				<1 618 0 0>,
-				<1 618 0 800>;
+				<88 618 0 0>,
+				<88 618 0 800>;
         };
 
 	qseecom: qcom,qseecom@7b00000 {
